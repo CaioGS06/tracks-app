@@ -1,4 +1,4 @@
-// import "../_mockLocation";
+import "../_mockLocation";
 
 import React, { useContext, useCallback } from "react";
 import { SafeAreaView, StyleSheet, Platform, StatusBar } from "react-native";
@@ -13,9 +13,13 @@ import TrackForm from "../components/TrackForm";
 const TrackCreateScreen = () => {
   const isFocused = useIsFocused();
   const { state, addLocation } = useContext(LocationContext);
-  const callback = useCallback(location => {
-    addLocation(location, state.recording);
-  }, [state.recording]);
+  const callback = useCallback(
+    (location) => {
+      addLocation(location, state.recording);
+    },
+    [state.recording]
+  );
+
   const [err] = useLocation(isFocused, callback);
 
   return (
@@ -35,8 +39,8 @@ const TrackCreateScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
-  }
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
 });
 
 export default TrackCreateScreen;
