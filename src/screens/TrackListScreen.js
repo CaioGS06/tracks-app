@@ -8,7 +8,7 @@ import { Context as TrackContext } from "../context/TrackContext";
 const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext);
 
-  console.log(JSON.stringify(state, null, 2));
+  // console.log(JSON.stringify(state, null, 2));
 
   useFocusEffect(
     React.useCallback(() => {
@@ -27,8 +27,10 @@ const TrackListScreen = ({ navigation }) => {
           renderItem={({ item }) => {
             return (
               <TouchableOpacity>
-                <ListItem>
-                  <ListItem.Title>{item.name}</ListItem.Title>
+                <ListItem bottomDivider>
+                  <ListItem.Content>
+                    <ListItem.Title>{item.name}</ListItem.Title>
+                  </ListItem.Content>
                   <ListItem.Chevron />
                 </ListItem>
               </TouchableOpacity>
