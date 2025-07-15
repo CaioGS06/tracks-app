@@ -26,14 +26,17 @@ const TrackListScreen = ({ navigation }) => {
           keyExtractor={item => item._id}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity>
-                <ListItem bottomDivider>
-                  <ListItem.Content>
-                    <ListItem.Title>{item.name}</ListItem.Title>
-                  </ListItem.Content>
-                  <ListItem.Chevron />
-                </ListItem>
-              </TouchableOpacity>
+              <ListItem
+                onPress={() =>
+                  navigation.navigate("TrackDetail", { _id: item._id })
+                }
+                bottomDivider
+              >
+                <ListItem.Content>
+                  <ListItem.Title>{item.name}</ListItem.Title>
+                </ListItem.Content>
+                <ListItem.Chevron />
+              </ListItem>
             );
           }}
         />
