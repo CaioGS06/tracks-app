@@ -8,8 +8,6 @@ import { Context as TrackContext } from "../context/TrackContext";
 const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext);
 
-  // console.log(JSON.stringify(state, null, 2));
-
   useFocusEffect(
     React.useCallback(() => {
       fetchTracks();
@@ -23,20 +21,17 @@ const TrackListScreen = ({ navigation }) => {
         <Spacer />
         <FlatList
           data={state}
-          keyExtractor={item => item._id}
+          keyExtractor={(item) => item._id}
           renderItem={({ item }) => {
             return (
-              <ListItem
-                onPress={() =>
-                  navigation.navigate("TrackDetail", { _id: item._id })
-                }
-                bottomDivider
-              >
-                <ListItem.Content>
-                  <ListItem.Title>{item.name}</ListItem.Title>
-                </ListItem.Content>
-                <ListItem.Chevron />
-              </ListItem>
+              <TouchableOpacity>
+                <ListItem>
+                  <ListItem.Content>
+                    <ListItem.Title>{item.name}</ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+              </TouchableOpacity>
             );
           }}
         />
@@ -48,8 +43,8 @@ const TrackListScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
 });
 
 export default TrackListScreen;
