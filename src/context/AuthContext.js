@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import createDataContext from "./createDataContext";
 import trackerApi from "../api/tracker";
-import { resetAndNavigate } from '../navigationRef';
+import { resetAndNavigate } from "../navigationRef";
 
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -41,7 +41,7 @@ const tryLocalSignIn = dispatch => async () => {
 }
 
 const signup = dispatch => async ({ email, password }) => {
-  dispatch({ type: 'clear_error_message' });
+  dispatch({ type: "clear_error_message" });
   try {
     const response = await trackerApi.post("/signup", { email, password });
     await AsyncStorage.setItem("token", response.data.token);
@@ -59,7 +59,7 @@ const signup = dispatch => async ({ email, password }) => {
 };
 
 const signin = dispatch => async ({ email, password }) => {
-  dispatch({ type: 'clear_error_message' });
+  dispatch({ type: "clear_error_message" });
   try {
     const response = await trackerApi.post("/signin", { email, password });
     await AsyncStorage.setItem("token", response.data.token);
