@@ -6,7 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -16,13 +20,19 @@
         "googleMaps": {
           "apiKey": "AIzaSyB--XIJlK-74bBDH1g-BdU7zvWGs5zew-Q"
         }
-      }
+      },
+      "package": "com.caiogs06.tracks"
     },
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bcea2b04-e253-492a-b444-6c20179bd25e"
+      }
     }
   }
 }
