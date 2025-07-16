@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { SafeAreaView, StyleSheet, Platform, StatusBar, FlatList, TouchableOpacity } from "react-native";
 import { Text, ListItem } from "@rneui/themed";
 import Spacer from "../components/Spacer";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Context as TrackContext } from "../context/TrackContext";
 
-const TrackListScreen = ({ navigation }) => {
+const TrackListScreen = () => {
   const { state, fetchTracks } = useContext(TrackContext);
+  const navigation = useNavigation();
 
   useFocusEffect(
     React.useCallback(() => {
@@ -24,7 +25,11 @@ const TrackListScreen = ({ navigation }) => {
           keyExtractor={(item) => item._id}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("TrackDetail", { _id: item._id })
+                }
+              >
                 <ListItem>
                   <ListItem.Content>
                     <ListItem.Title>{item.name}</ListItem.Title>
