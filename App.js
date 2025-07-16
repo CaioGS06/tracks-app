@@ -4,7 +4,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 import AccountScreen from "./src/screens/AccountScreen";
 import SigninScreen from "./src/screens/SigninScreen";
@@ -23,13 +23,12 @@ const Tab = createBottomTabNavigator();
 
 const TrackListFlow = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShadowVisible: false }}>
       <Stack.Screen
         name="TrackList"
         component={TrackListScreen}
         options={{
           title: "Your Tracks",
-          headerShadowVisible: false
         }}
       />
       <Stack.Screen
@@ -37,7 +36,7 @@ const TrackListFlow = () => {
         component={TrackDetailScreen}
         options={({ route }) => ({
           headerTitle: route.params.name,
-          title: "Back"
+          title: "Back",
         })}
       />
     </Stack.Navigator>
@@ -52,24 +51,26 @@ const MainFlow = () => {
         component={TrackListFlow}
         options={{
           headerShown: false,
-          title: "Your Tracks",
-          tabBarIcon: ({ color, size }) => <Ionicons name="list" size={size} color={color} />,
+          title: "Tracks",
+          tabBarIcon: ({ color, size }) => <FontAwesome name="list" size={size} color={color} />,
         }}
       />
       <Tab.Screen
         name="TrackCreate"
         component={TrackCreateScreen}
         options={{
-          title: "Create a Track",
-          tabBarIcon: ({ color, size }) => <Ionicons name="add" size={size} color={color} />,
+          title: "Add Track",
+          tabBarIcon: ({ color, size }) => <FontAwesome name="plus" size={size} color={color} />,
+          headerShadowVisible: false,
         }}
       />
       <Tab.Screen
         name="Account"
         component={AccountScreen}
         options={{
-          title: "Your Account",
-          tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} />,
+          title: "Account",
+          tabBarIcon: ({ color, size }) => <FontAwesome name="gear" size={size} color={color} />,
+          headerShadowVisible: false,
         }}
       />
     </Tab.Navigator>

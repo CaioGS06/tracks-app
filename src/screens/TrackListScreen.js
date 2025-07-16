@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SafeAreaView, StyleSheet, Platform, StatusBar, FlatList, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { Text, ListItem } from "@rneui/themed";
 import Spacer from "../components/Spacer";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
@@ -48,8 +48,7 @@ const TrackListScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flex: 1
   },
 });
 

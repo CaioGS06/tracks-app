@@ -1,7 +1,7 @@
 import "../_mockLocation";
 
 import React, { useContext, useCallback } from "react";
-import { SafeAreaView, StyleSheet, Platform, StatusBar } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { Text } from "@rneui/themed";
 import { useIsFocused } from "@react-navigation/native";
 import Spacer from "../components/Spacer";
@@ -36,8 +36,7 @@ const TrackCreateScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    flex: 1
   },
 });
 

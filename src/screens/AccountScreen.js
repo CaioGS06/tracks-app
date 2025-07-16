@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SafeAreaView, StyleSheet, Platform, StatusBar } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { Text, Button } from "@rneui/base";
 import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
@@ -21,8 +21,7 @@ const AccountScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+    flex: 1
   }
 });
 
