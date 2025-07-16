@@ -23,12 +23,22 @@ const Tab = createBottomTabNavigator();
 
 const TrackListFlow = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="TrackList" component={TrackListScreen} />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="TrackList"
+        component={TrackListScreen}
+        options={{
+          title: "Your Tracks",
+          headerShadowVisible: false
+        }}
+      />
       <Stack.Screen
         name="TrackDetail"
         component={TrackDetailScreen}
-        options={{ headerShown: true, title: "Track Detail" }}
+        options={({ route }) => ({
+          headerTitle: route.params.name,
+          title: "Back"
+        })}
       />
     </Stack.Navigator>
   );
@@ -36,12 +46,13 @@ const TrackListFlow = () => {
 
 const MainFlow = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator>
       <Tab.Screen
         name="TrackListFlow"
         component={TrackListFlow}
         options={{
-          title: "Tracks",
+          headerShown: false,
+          title: "Your Tracks",
           tabBarIcon: ({ color, size }) => <Ionicons name="list" size={size} color={color} />,
         }}
       />
@@ -49,7 +60,7 @@ const MainFlow = () => {
         name="TrackCreate"
         component={TrackCreateScreen}
         options={{
-          title: "Add Track",
+          title: "Create a Track",
           tabBarIcon: ({ color, size }) => <Ionicons name="add" size={size} color={color} />,
         }}
       />
@@ -57,7 +68,7 @@ const MainFlow = () => {
         name="Account"
         component={AccountScreen}
         options={{
-          title: "Account",
+          title: "Your Account",
           tabBarIcon: ({ color, size }) => <Ionicons name="person" size={size} color={color} />,
         }}
       />

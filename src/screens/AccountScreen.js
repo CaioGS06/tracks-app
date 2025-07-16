@@ -10,8 +10,6 @@ const AccountScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Spacer>
-        <Text h2>This is the AccountScreen</Text>
-        <Spacer />
         <Button
           title="Sign Out"
           onPress={signout}

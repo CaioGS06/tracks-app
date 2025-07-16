@@ -25,8 +25,6 @@ const TrackCreateScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Spacer>
-        <Text h2>Create a Track</Text>
-        <Spacer />
         <Map />
         <Text>{err ? "Please enable location services." : ""}</Text>
         <Spacer />

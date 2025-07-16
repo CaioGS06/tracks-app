@@ -18,8 +18,6 @@ const TrackListScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Spacer>
-        <Text h2>This is the TrackListScreen</Text>
-        <Spacer />
         <FlatList
           data={state}
           keyExtractor={(item) => item._id}
@@ -27,7 +25,10 @@ const TrackListScreen = () => {
             return (
               <TouchableOpacity
                 onPress={() =>
-                  navigation.navigate("TrackDetail", { _id: item._id })
+                  navigation.navigate("TrackDetail", {
+                    _id: item._id,
+                    name: item.name
+                  })
                 }
               >
                 <ListItem>
