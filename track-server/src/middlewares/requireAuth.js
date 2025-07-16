@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
     return res.status(401).send({ error: "You must be logged in." });
 
   const token = authorization.replace("Bearer ", "");
-  jwt.verify(token, "MY_SECRET_KEY", async (err, payload) => {
+  jwt.verify(token, process.env.MY_SECRET_KEY, async (err, payload) => {
     if (err)
       return res.status(401).send({ error: "You must be logged in." });
 
